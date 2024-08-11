@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Order = ({ products }) => {
+  const [selectedOption, setSelectedOption] = useState("option2");
+
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   const subtotal = products.reduce(
     (acc, product) => acc + product.price * product.quantity,
     0
@@ -72,52 +78,87 @@ const Order = ({ products }) => {
           </div>
         </div>
       </div>
+
       <div>
         <h4 className="text-sm font-semibold mb-3.5">Shipping method</h4>
         <form className="flex flex-col gap-3" action="#">
-          <div className="border border-gray-150 rounded-xl flex flex-row items-center justify-between p-3">
-            <div className="flex flex-row items-center gap-2.5">
-              <input type="radio" className="checked:bg-black checked:border-black hover:cursor-pointer" name="method" />
-              <label className="flex flex-col" htmlFor="free">
-                <span className="text-black text-xs sm:text-sm">Free shipping</span>
+          <div className="border border-gray-150 rounded-xl flex flex-row justify-between p-3">
+            <label className="flex items-center space-x-2">
+              <div className="relative">
+                <input
+                  type="radio"
+                  value="option1"
+                  checked={selectedOption === "option1"}
+                  onChange={handleChange}
+                  className="appearance-none h-6 w-6 border-2 border-black rounded-full cursor-pointer"
+                />
+                {selectedOption === "option1" && (
+                  <div className="absolute top-1 left-1 h-4 w-4 bg-black rounded-full"></div>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black text-xs sm:text-sm">
+                  Free shipping
+                </span>
                 <span className="text-xs text-gray-350">
                   7-30 business days
                 </span>
-              </label>
-            </div>
+              </div>
+            </label>
             <div className="flex flex-row justify-between">
               <p>$0</p>
             </div>
           </div>
 
-          <div className="border border-gray-150 rounded-xl flex flex-row items-center justify-between p-3">
-            <div className="flex flex-row items-center gap-2.5">
-              <input
-                className="checked:bg-black checked:border-black hover:cursor-pointer"
-                checked
-                type="radio"
-                name="method"
-              />
-              <label className="flex flex-col" htmlFor="regular">
-                <span className="text-black text-xs sm:text-sm">Regular shipping</span>
+          <div className="border border-gray-150 rounded-xl flex flex-row items-center justify-between p-3 space-x-4">
+            <label className="flex flex-row items-center space-x-2">
+              <div className="relative">
+                <input
+                  type="radio"
+                  value="option2"
+                  checked={selectedOption === "option1"}
+                  onChange={handleChange}
+                  className="appearance-none h-6 w-6 border-2 border-black rounded-full cursor-pointer"
+                />
+                {selectedOption === "option2" && (
+                  <div className="absolute top-1 left-1 h-4 w-4 bg-black rounded-full"></div>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black text-xs sm:text-sm">
+                Regular shipping
+                </span>
                 <span className="text-xs text-gray-350">
                   3-14 business days
                 </span>
-              </label>
-            </div>
+              </div>
+            </label>
             <div className="flex flex-row justify-between">
               <p>$7,50</p>
             </div>
           </div>
 
-          <div className="border border-gray-150 rounded-xl flex flex-row items-center justify-between p-3">
-            <div className="flex flex-row items-center gap-2.5">
-              <input type="radio" className="checked:bg-black checked:border-black hover:cursor-pointer" name="method" />
-              <label className="flex flex-col" htmlFor="express">
-                <span className="text-black text-xs sm:text-sm">Express shipping</span>
+          <div className="border border-gray-150 rounded-xl flex flex-row items-center justify-between p-3 space-x-4">
+            <label className="flex items-center space-x-2">
+              <div className="relative">
+                <input
+                  type="radio"
+                  value="option3"
+                  checked={selectedOption === "option3"}
+                  onChange={handleChange}
+                  className="appearance-none h-6 w-6 border-2 border-black rounded-full cursor-pointer"
+                />
+                {selectedOption === "option3" && (
+                  <div className="absolute top-1 left-1 h-4 w-4 bg-black rounded-full"></div>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <span className="text-black text-xs sm:text-sm">
+                  Express shipping
+                </span>
                 <span className="text-xs text-gray-350">1-3 business days</span>
-              </label>
-            </div>
+              </div>
+            </label>
             <div className="flex flex-row justify-between">
               <p>$22,50</p>
             </div>

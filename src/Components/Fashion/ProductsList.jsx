@@ -1,52 +1,21 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import cart from "../../assets/icons/cart.png";
-import { useCart } from '../Cart/CartContext'; 
+import { useCart } from '../Cart/CartContext';
+import { productsListData } from "../Utils/productsListUtils"; 
 
 const ProductsList = ({ products }) => {
-  const { addToCart, clearCart } = useCart(); 
-  const navigate = useNavigate(); 
+  const { addToCart, clearCart } = useCart();
+  const navigate = useNavigate();
 
   const handleBuyNow = (product) => {
     clearCart();
-    addToCart({
-    id: product.node.id,
-    title: product.node.title,
-    description: product.node.description,
-    price: product.node.variants.edges[0]?.node.price.amount,
-    currency: product.node.variants.edges[0]?.node.price.currencyCode,
-    image: product.node.featuredImage.url,
-    variant: {
-      id: product.node.variants.edges[0]?.node.id,
-      title: product.node.variants.edges[0]?.node.title,
-      image: product.node.variants.edges[0]?.node.image?.url,
-      selectedOptions: product.node.variants.edges[0]?.node.selectedOptions?.map((option) => ({
-        name: option.name,
-        value: option.value,
-      })),
-    },
-  });
+    addToCart(productsListData(product));
     navigate("/checkout");
   };
 
   const handleAddToCart = (product) => {
-    addToCart({
-    id: product.node.id,
-    title: product.node.title,
-    description: product.node.description,
-    price: product.node.variants.edges[0]?.node.price.amount,
-    currency: product.node.variants.edges[0]?.node.price.currencyCode,
-    image: product.node.featuredImage.url,
-    variant: {
-      id: product.node.variants.edges[0]?.node.id,
-      title: product.node.variants.edges[0]?.node.title,
-      image: product.node.variants.edges[0]?.node.image?.url,
-      selectedOptions: product.node.variants.edges[0]?.node.selectedOptions?.map((option) => ({
-        name: option.name,
-        value: option.value,
-      })),
-    },
-  });
+    addToCart(productsListData(product));
   };
 
   return (

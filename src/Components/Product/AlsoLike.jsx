@@ -4,6 +4,7 @@ import loadinggif from '../../assets/images/loading.gif';
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../Cart/CartContext";
 import { API_PRODUCTS_COLLECTIONS } from "../Api/CollectionsProductsApi";
+import { productData } from "../Utils/alsoLikeProductsUtils";
 
 const AlsoLike = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,6 @@ const AlsoLike = () => {
         const request = await fetch(API_PRODUCTS_COLLECTIONS);
         const response = await request.json();
 
-        
         const allProducts = response.data.collections.edges.flatMap(collection =>
           collection.node.products.edges
         );
@@ -37,44 +37,12 @@ const AlsoLike = () => {
 
   const handleBuyNow = (product) => {
     clearCart();
-    addToCart({
-      id: product.node.id,
-      title: product.node.title,
-      description: product.node.description,
-      price: product.node.variants.edges[0]?.node.price.amount,
-      currency: product.node.variants.edges[0]?.node.price.currencyCode,
-      image: product.node.featuredImage.url,
-      variant: {
-        id: product.node.variants.edges[0]?.node.id,
-        title: product.node.variants.edges[0]?.node.title,
-        image: product.node.variants.edges[0]?.node.image?.url,
-        selectedOptions: product.node.variants.edges[0]?.node.selectedOptions?.map((option) => ({
-          name: option.name,
-          value: option.value,
-        })),
-      },
-    });
+    addToCart(productData(product));
     navigate("/checkout");
   };
 
   const handleAddToCart = (product) => {
-    addToCart({
-      id: product.node.id,
-      title: product.node.title,
-      description: product.node.description,
-      price: product.node.variants.edges[0]?.node.price.amount,
-      currency: product.node.variants.edges[0]?.node.price.currencyCode,
-      image: product.node.featuredImage.url,
-      variant: {
-        id: product.node.variants.edges[0]?.node.id,
-        title: product.node.variants.edges[0]?.node.title,
-        image: product.node.variants.edges[0]?.node.image?.url,
-        selectedOptions: product.node.variants.edges[0]?.node.selectedOptions?.map((option) => ({
-          name: option.name,
-          value: option.value,
-        })),
-      },
-    });
+    addToCart(productData(product));
   };
 
   return (
