@@ -1,0 +1,56 @@
+@import url('https://fonts.cdnfonts.com/css/chillax');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: Archivo, sans-serif;
+}
+
+.container {
+  max-width: 1500px !important;
+  margin: 0 auto;
+}
+
+.text-stroke-black {
+    -webkit-text-stroke: 1px black;
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px white;
+}
+
+body::-webkit-scrollbar {
+  background-color: white;
+  width: 15px;
+}
+
+body::-webkit-scrollbar-thumb, .alsolike::-webkit-scrollbar-thumb {
+  background-color: #666A72;
+  border-radius: 25px;
+}
+
+body::-webkit-scrollbar-thumb:hover, .alsolike::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.alsolike::-webkit-scrollbar {
+  background-color: white;
+  height: 10px;
+}
+
+::selection {
+  background-color: black;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: black;
+  color: white;
+}
