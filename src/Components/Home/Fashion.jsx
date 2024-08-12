@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Collection from "../Fashion/Collection";
-import Products from "../Fashion/Products";
 import { API_PRODUCTS_COLLECTIONS } from "../Api/CollectionsProductsApi";
+import { Collection, Products } from "../Fashion";
 
 const Fashion = () => {
   const [collections, setCollections] = useState([]);
