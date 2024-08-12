@@ -1,23 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { API_PRODUCTS_COLLECTIONS } from "../Api/CollectionsProductsApi";
+import React from "react";
 import { Collection, Products } from "../Fashion";
 
-const Fashion = () => {
-  const [collections, setCollections] = useState([]);
-
-  async function fetchCollections() {
-    try {
-      const request = await fetch(API_PRODUCTS_COLLECTIONS);
-      const response = await request.json();
-      setCollections(response.data.collections.edges);
-    } catch (error) {
-      console.error("Error fetching collections:", error);
-    }
-  }
-
-  useEffect(() => {
-    fetchCollections();
-  }, []);
+const Fashion = ({collections}) => {
 
   return (
     <section className="pt-17 md:mx-30 sm:mx-11.5 mx-5">
