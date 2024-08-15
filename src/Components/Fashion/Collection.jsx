@@ -14,7 +14,7 @@ const Collection = () => {
         </p>
       </div>
 
-      <div className="flex flex-col items-center sm:flex-row justify-center gap-4 z-0">
+      <div className="flex flex-col-reverse items-center sm:flex-row justify-center gap-4 z-0">
         <div className="bg-collection1 relative w-full sm:w-1/2 lg:w-305 h-446 bg-center bg-no-repeat bg-cover rounded-4xl">
           <div className="absolute inset-0 bg-black bg-opacity-15 flex justify-center items-end rounded-4xl pb-6">
             <a
