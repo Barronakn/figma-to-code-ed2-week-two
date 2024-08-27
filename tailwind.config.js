@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       fontFamily: {
         chillax: "Chillax, sans-serif",
-        JetBrains : "JetBrains Mono, monospace",
       },
       backgroundImage: {
         hero: "url('/src/assets/images/bg-header.png')",
