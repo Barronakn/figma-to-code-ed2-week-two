@@ -28,13 +28,15 @@ const Product = ({ collections }) => {
   }
 
   return (
+    <>
     <div className="container">
       <NavbarHead />
       <Navbar />
       <Details product={product} />
       <AlsoLike />
-      <Footer />
     </div>
+      <Footer />
+    </>
   );
 };
 

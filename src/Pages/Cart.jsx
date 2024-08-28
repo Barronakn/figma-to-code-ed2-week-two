@@ -7,6 +7,7 @@ const Cart = () => {
   const { cart } = useCart();
 
   return (
+    <>
     <div className="container">
       <NavbarHead />
       <Navbar />
@@ -14,8 +15,9 @@ const Cart = () => {
         <CartList products={cart} />
         <SummaryCart products={cart} />
       </div>
-      <Footer />
     </div>
+      <Footer />
+    </>
   );
 };
 

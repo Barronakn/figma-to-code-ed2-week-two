@@ -11,6 +11,7 @@ const Checkout = () => {
   }, []);
 
   return (
+    <>
     <div className="container">
       <NavbarHead />
       <Navbar />
@@ -21,8 +22,9 @@ const Checkout = () => {
           <PayementDetails products={cart} />
         </div>
       </div>
-      <Footer />
     </div>
+      <Footer />
+    </>
   );
 };
 
